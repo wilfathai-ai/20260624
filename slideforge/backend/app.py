@@ -39,7 +39,7 @@ def get_available_models():
 
 def ollama_generate(model: str, prompt: str) -> str:
     payload = {"model": model, "prompt": prompt, "stream": False}
-    r = requests.post(f"{OLLAMA_URL}/api/generate", json=payload, timeout=120)
+    r = requests.post(f"{OLLAMA_URL}/api/generate", json=payload, timeout=300)
     r.raise_for_status()
     return r.json().get("response", "")
 
