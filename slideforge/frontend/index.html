@@ -21,9 +21,11 @@
   .status-pill { font-size:0.72rem; padding:2px 10px; border-radius:20px; border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); }
   .status-pill.connected { border-color:#4ade80; color:#4ade80; }
 
-  main { flex:1; display:grid; grid-template-columns:340px 1fr; gap:1.5rem; max-width:1200px; margin:0 auto; width:100%; padding:2rem 1.5rem; align-items:start; }
+  main { flex:1; display:flex; flex-direction:column; gap:1.25rem; max-width:1500px; margin:0 auto; width:100%; padding:1.5rem; }
 
-  .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; }
+  .settings-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:1rem; align-items:start; }
+
+  .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; }
   .card-title { font-size:0.78rem; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted); margin-bottom:1.1rem; display:flex; align-items:center; gap:0.4rem; }
   .section-gap { margin-top:1.2rem; }
 
@@ -33,32 +35,40 @@
   .select-wrap { position:relative; }
   .select-wrap::after { content:''; position:absolute; right:10px; top:50%; transform:translateY(-50%); width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid var(--muted); pointer-events:none; }
 
-  .drop-zone { border:2px dashed var(--border); border-radius:var(--radius); padding:2rem 1rem; text-align:center; cursor:pointer; transition:border-color 0.2s, background 0.2s; }
+  .drop-zone { border:2px dashed var(--border); border-radius:var(--radius); padding:1.5rem 1rem; text-align:center; cursor:pointer; transition:border-color 0.2s, background 0.2s; }
   .drop-zone:hover, .drop-zone.drag-over { border-color:var(--accent); background:var(--accent-light); }
-  .drop-zone svg { width:36px; height:36px; color:var(--muted); }
-  .drop-zone p { font-size:0.85rem; color:var(--muted); margin-top:0.5rem; }
+  .drop-zone svg { width:32px; height:32px; color:var(--muted); }
+  .drop-zone p { font-size:0.82rem; color:var(--muted); margin-top:0.4rem; }
   .drop-zone strong { color:var(--ink); }
   .drop-zone input { display:none; }
   .file-badge { display:inline-flex; align-items:center; gap:0.4rem; background:var(--accent-light); border:1px solid var(--accent-border); color:var(--accent); border-radius:6px; padding:4px 10px; font-size:0.82rem; margin-top:0.75rem; }
   .file-badge button { background:none; border:none; cursor:pointer; color:var(--accent); font-size:1rem; line-height:1; padding:0; }
 
   .color-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-top:0.35rem; }
-  .color-chip { border:2px solid transparent; border-radius:8px; padding:0.5rem 0.3rem; cursor:pointer; text-align:center; font-size:0.75rem; font-weight:500; color:#fff; transition:transform 0.1s, border-color 0.15s; position:relative; overflow:hidden; }
+  .color-chip { border:2px solid transparent; border-radius:8px; padding:0.5rem 0.3rem; cursor:pointer; text-align:center; font-size:0.72rem; font-weight:500; color:#fff; transition:transform 0.1s, border-color 0.15s; position:relative; overflow:hidden; }
   .color-chip:hover { transform:scale(1.04); }
   .color-chip.selected { border-color:var(--ink); box-shadow:0 0 0 3px rgba(0,0,0,0.12); }
   .color-chip::after { content:'✓'; position:absolute; top:3px; right:5px; font-size:0.7rem; opacity:0; transition:opacity 0.15s; }
   .color-chip.selected::after { opacity:1; }
+  .color-chip.custom-chip { color:#1e293b; border:1px solid var(--border); }
+
+  .custom-color-panel { margin-top:0.6rem; padding:0.6rem; background:var(--bg); border:1px solid var(--border); border-radius:8px; display:none; }
+  .custom-color-panel.open { display:block; }
+  .custom-color-row { display:flex; align-items:center; justify-content:space-between; gap:0.5rem; margin-bottom:0.4rem; }
+  .custom-color-row:last-child { margin-bottom:0; }
+  .custom-color-row label { font-size:0.78rem; color:var(--muted); }
+  .custom-color-row input[type="color"] { width:40px; height:26px; border:1px solid var(--border); border-radius:5px; padding:0; cursor:pointer; }
 
   .toggle-group { display:flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
   .toggle-btn { flex:1; padding:0.5rem; text-align:center; font-size:0.82rem; font-weight:500; cursor:pointer; border:none; background:none; color:var(--muted); transition:background 0.15s, color 0.15s; display:flex; align-items:center; justify-content:center; gap:0.4rem; }
   .toggle-btn.active { background:var(--accent); color:#fff; }
 
-  .btn-generate { width:100%; padding:0.85rem; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); font-size:1rem; font-weight:600; cursor:pointer; margin-top:1.2rem; transition:background 0.15s, opacity 0.15s; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+  .btn-generate { width:100%; padding:0.85rem; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); font-size:1rem; font-weight:600; cursor:pointer; transition:background 0.15s, opacity 0.15s; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
   .btn-generate:hover { background:#1d4ed8; }
   .btn-generate:disabled { opacity:0.5; cursor:not-allowed; }
 
   .preview-panel { display:flex; flex-direction:column; gap:1rem; }
-  .preview-empty { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:4rem 2rem; text-align:center; color:var(--muted); }
+  .preview-empty { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:3rem 2rem; text-align:center; color:var(--muted); }
   .preview-empty svg { width:48px; height:48px; opacity:0.3; }
   .preview-empty p { margin-top:0.75rem; font-size:0.9rem; }
 
@@ -69,12 +79,25 @@
   .slide-num-badge { position:absolute; top:8px; right:8px; font-size:0.65rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:600; }
   .slide-header-bar { position:absolute; top:0; left:0; right:0; height:28px; display:flex; align-items:center; padding:0 10px; }
   .slide-header-bar span { font-size:0.7rem; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90%; }
-  .slide-body-content { margin-top:32px; flex:1; overflow:hidden; }
+  .slide-body-content { margin-top:32px; flex:1; overflow:hidden; display:flex; gap:0.5rem; }
+  .slide-bullets { flex:1; min-width:0; }
   .slide-bullet { font-size:0.65rem; margin-bottom:4px; padding-left:10px; position:relative; line-height:1.4; }
   .slide-bullet::before { content:'•'; position:absolute; left:2px; }
   .slide-title-big { font-size:1.1rem; font-weight:700; line-height:1.3; }
   .slide-subtitle-small { font-size:0.65rem; margin-top:0.3rem; opacity:0.7; }
   .slide-meta { padding:0.5rem 0.75rem; background:var(--bg); font-size:0.75rem; color:var(--muted); display:flex; align-items:center; justify-content:space-between; }
+
+  .chart-box { width:42%; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .chart-pie { width:50px; height:50px; border-radius:50%; }
+  .chart-bar { display:flex; align-items:flex-end; gap:3px; height:46px; width:100%; }
+  .chart-bar-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; }
+  .chart-bar-fill { width:100%; border-radius:2px 2px 0 0; min-height:2px; }
+  .chart-bar-label { font-size:0.45rem; color:#fff; opacity:0.8; margin-top:2px; white-space:nowrap; overflow:hidden; }
+  .chart-barh { display:flex; flex-direction:column; gap:3px; width:100%; justify-content:center; }
+  .chart-barh-row { display:flex; align-items:center; gap:3px; }
+  .chart-barh-label { font-size:0.45rem; color:#fff; opacity:0.8; width:24px; overflow:hidden; white-space:nowrap; }
+  .chart-barh-track { flex:1; background:rgba(255,255,255,0.18); border-radius:2px; height:7px; }
+  .chart-barh-fill { height:100%; border-radius:2px; }
 
   .download-bar { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; }
   .download-bar p { font-size:0.9rem; font-weight:500; }
@@ -107,8 +130,7 @@
 </header>
 
 <main>
-  <!-- 左パネル -->
-  <div style="display:flex;flex-direction:column;gap:1rem;">
+  <div class="settings-row">
 
     <div class="card">
       <div class="card-title">1 — AIモデル</div>
@@ -161,6 +183,21 @@
           <div class="color-chip" style="background:#212121" data-color="モノクロ">モノクロ</div>
           <div class="color-chip" style="background:#7C2D12" data-color="ウォームオレンジ">オレンジ系</div>
           <div class="color-chip" style="background:#3B1F6E" data-color="パープル系">パープル系</div>
+          <div class="color-chip custom-chip" id="customChip" data-color="カスタム">カスタム</div>
+        </div>
+        <div class="custom-color-panel" id="customColorPanel">
+          <div class="custom-color-row">
+            <label>背景</label>
+            <input type="color" id="customBg" value="#1E3A5F">
+          </div>
+          <div class="custom-color-row">
+            <label>ラベル</label>
+            <input type="color" id="customAccent" value="#4A90D9">
+          </div>
+          <div class="custom-color-row">
+            <label>文字</label>
+            <input type="color" id="customText" value="#FFFFFF">
+          </div>
         </div>
       </div>
 
@@ -193,7 +230,20 @@
     </div>
 
     <div class="card">
-      <div class="card-title">4 — 出力形式</div>
+      <div class="card-title">4 — グラフ・挿絵</div>
+      <label class="field-label">グラフの挿入</label>
+      <div class="select-wrap">
+        <select id="chartFreqSelect">
+          <option value="none">挿入しない</option>
+          <option value="some">一部のスライドに（1〜2枚）</option>
+          <option value="many">できるだけ多く</option>
+        </select>
+      </div>
+      <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem;">円グラフ・縦棒・横棒グラフをAIが内容に応じて自動で配置します</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">5 — 出力形式</div>
       <div class="toggle-group">
         <button class="toggle-btn active" id="btnPptx" onclick="setExportFormat('pptx')">PowerPoint (.pptx)</button>
         <button class="toggle-btn" id="btnGslides" onclick="setExportFormat('gslides')">Google スライド用 JSON</button>
@@ -201,19 +251,19 @@
       <p id="exportNote" style="font-size:0.75rem;color:var(--muted);margin-top:0.6rem;">.pptxファイルを直接ダウンロードします</p>
     </div>
 
-    <button class="btn-generate" id="generateBtn" onclick="generate()">
-      ▶ スライドを生成する
-    </button>
   </div>
 
-  <!-- 右パネル（プレビュー） -->
+  <button class="btn-generate" id="generateBtn" onclick="generate()">
+    ▶ スライドを生成する
+  </button>
+
   <div class="preview-panel" id="previewPanel">
     <div class="preview-empty" id="emptyState">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
         <rect x="2" y="5" width="20" height="14" rx="2"/>
         <path d="M8 10h8M8 14h5"/>
       </svg>
-      <p>左側で設定して<br>「スライドを生成する」を押すと<br>ここにプレビューが表示されます</p>
+      <p>上で設定して<br>「スライドを生成する」を押すと<br>ここにプレビューが表示されます</p>
     </div>
   </div>
 </main>
@@ -223,16 +273,19 @@ const API = 'http://localhost:5050';
 let selectedColor = 'ブルー系';
 let exportFormat  = 'pptx';
 let currentFile   = null;
+let customColors  = { bg: '#1E3A5F', accent: '#4A90D9', text: '#FFFFFF' };
 
 const PALETTE_BG     = {'ブルー系':'#1E3A5F','グリーン系':'#1B4332','レッド系':'#7B1D1D','モノクロ':'#212121','ウォームオレンジ':'#7C2D12','パープル系':'#3B1F6E'};
 const PALETTE_ACCENT = {'ブルー系':'#4A90D9','グリーン系':'#52B788','レッド系':'#E63946','モノクロ':'#BDBDBD','ウォームオレンジ':'#EA580C','パープル系':'#9B5DE5'};
 const PALETTE_SUB    = {'ブルー系':'#BDD5EA','グリーン系':'#B7E4C7','レッド系':'#FFCCD5','モノクロ':'#E0E0E0','ウォームオレンジ':'#FED7AA','パープル系':'#D4B8FA'};
+const CHART_COLORS   = ['#8884d8','#82ca9d','#ffc658','#ff8a65','#4dd0e1','#ba68c8'];
 
 (async () => {
   await checkOllama();
   await loadModels();
   setupDrop();
   setupColors();
+  setupCustomColorInputs();
 })();
 
 async function checkOllama() {
@@ -290,8 +343,23 @@ function setupColors() {
       document.querySelectorAll('.color-chip').forEach(c => c.classList.remove('selected'));
       chip.classList.add('selected');
       selectedColor = chip.dataset.color;
+      document.getElementById('customColorPanel').classList.toggle('open', selectedColor === 'カスタム');
     };
   });
+}
+
+function setupCustomColorInputs() {
+  const bgInp = document.getElementById('customBg');
+  const accInp = document.getElementById('customAccent');
+  const txtInp = document.getElementById('customText');
+  const updateChipPreview = () => {
+    const chip = document.getElementById('customChip');
+    chip.style.background = `linear-gradient(135deg, ${customColors.bg} 35%, ${customColors.accent} 35% 70%, ${customColors.text} 70%)`;
+  };
+  bgInp.oninput  = () => { customColors.bg = bgInp.value; updateChipPreview(); };
+  accInp.oninput = () => { customColors.accent = accInp.value; updateChipPreview(); };
+  txtInp.oninput = () => { customColors.text = txtInp.value; updateChipPreview(); };
+  updateChipPreview();
 }
 
 function setExportFormat(fmt) {
@@ -303,17 +371,35 @@ function setExportFormat(fmt) {
     : 'Google スライド用JSONをダウンロードしてApps Scriptで取り込んでください';
 }
 
+function getActivePalette() {
+  if (selectedColor === 'カスタム') {
+    return { bg: customColors.bg, acc: customColors.accent, sub: customColors.text };
+  }
+  return {
+    bg:  PALETTE_BG[selectedColor]     || '#1E3A5F',
+    acc: PALETTE_ACCENT[selectedColor] || '#4A90D9',
+    sub: PALETTE_SUB[selectedColor]    || '#BDD5EA',
+  };
+}
+
+function buildDesign() {
+  const design = {
+    theme:         document.getElementById('themeSelect').value,
+    colorScheme:   selectedColor,
+    fontStyle:     document.getElementById('fontSelect').value,
+    layout:        document.getElementById('layoutSelect').value,
+    chartFrequency: document.getElementById('chartFreqSelect').value,
+  };
+  if (selectedColor === 'カスタム') design.customColors = { ...customColors };
+  return design;
+}
+
 async function generate() {
   const model = document.getElementById('modelSelect').value;
   if (!model) { showError('モデルを選択してください'); return; }
   if (!currentFile) { showError('ファイルをアップロードしてください'); return; }
 
-  const design = {
-    theme:       document.getElementById('themeSelect').value,
-    colorScheme: selectedColor,
-    fontStyle:   document.getElementById('fontSelect').value,
-    layout:      document.getElementById('layoutSelect').value,
-  };
+  const design = buildDesign();
   const slideCount = parseInt(document.getElementById('slideCount').value) || 8;
 
   showProgress('アウトラインを読み込み中…');
@@ -325,7 +411,7 @@ async function generate() {
     fd.append('design', JSON.stringify(design));
     fd.append('slideCount', slideCount);
     fd.append('file', currentFile);
-    updateProgress('AIがスライドを生成中…（しばらくお待ちください）');
+    updateProgress('AIがスライドを生成中…（モデルやPCの性能によって数分かかることがあります）');
     const res = await fetch(`${API}/api/preview`, {method:'POST', body:fd});
     const data = await res.json();
     if (data.error) { showError(data.error); return; }
@@ -339,12 +425,7 @@ async function generate() {
 
 async function downloadFile() {
   const model = document.getElementById('modelSelect').value;
-  const design = {
-    theme: document.getElementById('themeSelect').value,
-    colorScheme: selectedColor,
-    fontStyle: document.getElementById('fontSelect').value,
-    layout: document.getElementById('layoutSelect').value,
-  };
+  const design = buildDesign();
   const slideCount = parseInt(document.getElementById('slideCount').value) || 8;
   const fd = new FormData();
   fd.append('model', model); fd.append('design', JSON.stringify(design));
@@ -384,17 +465,48 @@ function showError(msg) {
     <div class="preview-empty"><p>設定を確認して再度お試しください</p></div>`;
 }
 
+function renderChartPreview(chart) {
+  if (!chart || !Array.isArray(chart.data) || !chart.data.length) return '';
+  const data = chart.data;
+  const total = data.reduce((s,d) => s + (Number(d.value)||0), 0) || 1;
+
+  if (chart.type === 'pie') {
+    let cum = 0;
+    const stops = data.map((d,i) => {
+      const pct = (Number(d.value)||0) / total * 100;
+      const start = cum; cum += pct;
+      return `${CHART_COLORS[i % CHART_COLORS.length]} ${start}% ${cum}%`;
+    }).join(', ');
+    return `<div class="chart-box"><div class="chart-pie" style="background:conic-gradient(${stops});"></div></div>`;
+  }
+
+  const max = Math.max(...data.map(d => Number(d.value)||0), 1);
+  if (chart.type === 'barH') {
+    const rows = data.slice(0,4).map((d,i) => `
+      <div class="chart-barh-row">
+        <span class="chart-barh-label">${d.label}</span>
+        <div class="chart-barh-track"><div class="chart-barh-fill" style="width:${(Number(d.value)||0)/max*100}%;background:${CHART_COLORS[i % CHART_COLORS.length]}"></div></div>
+      </div>`).join('');
+    return `<div class="chart-box"><div class="chart-barh">${rows}</div></div>`;
+  }
+  const cols = data.slice(0,5).map((d,i) => `
+    <div class="chart-bar-col">
+      <div class="chart-bar-fill" style="height:${(Number(d.value)||0)/max*100}%;background:${CHART_COLORS[i % CHART_COLORS.length]}"></div>
+      <span class="chart-bar-label">${d.label}</span>
+    </div>`).join('');
+  return `<div class="chart-box"><div class="chart-bar">${cols}</div></div>`;
+}
+
 function renderPreview(data) {
   const slides = data.slides || [];
-  const bg  = PALETTE_BG[selectedColor]     || '#1E3A5F';
-  const acc = PALETTE_ACCENT[selectedColor] || '#4A90D9';
-  const sub = PALETTE_SUB[selectedColor]    || '#BDD5EA';
+  const { bg, acc, sub } = getActivePalette();
   const fmt = exportFormat === 'pptx' ? 'PowerPoint (.pptx)' : 'Google スライド用 JSON';
 
   const cards = slides.map(s => {
     const isTitle = s.type === 'title';
     const bullets = (s.content || []).slice(0,5)
       .map(b => `<div class="slide-bullet" style="color:#fff;opacity:0.9;">${b}</div>`).join('');
+    const chartHtml = !isTitle ? renderChartPreview(s.chart) : '';
     const preview = isTitle
       ? `<div class="slide-preview type-title" style="background:${bg}">
            <div class="slide-num-badge" style="background:${acc};color:#fff">${s.slideNumber}</div>
@@ -404,7 +516,10 @@ function renderPreview(data) {
       : `<div class="slide-preview" style="background:${bg}">
            <div class="slide-header-bar" style="background:${acc}"><span>${s.title||''}</span></div>
            <div class="slide-num-badge" style="background:${bg};border:1px solid ${sub};color:${sub}">${s.slideNumber}</div>
-           <div class="slide-body-content">${bullets}</div>
+           <div class="slide-body-content">
+             <div class="slide-bullets">${bullets}</div>
+             ${chartHtml}
+           </div>
          </div>`;
     return `<div class="slide-card">${preview}
       <div class="slide-meta">
