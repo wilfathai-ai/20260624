@@ -1,0 +1,6 @@
+flask
+flask-cors
+python-docx
+pymupdf
+python-pptx
+requests
