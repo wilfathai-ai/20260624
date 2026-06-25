@@ -23,7 +23,7 @@ start "" "%~dp0frontend\index.html"
 
 echo.
 echo SlideForge を起動しました！
-echo バックエンド: http://localhost:5050
+echo バックエンド : http://localhost:5050
 echo このウィンドウを閉じると終了します
 echo.
 pause
