@@ -50,7 +50,7 @@ def get_available_models():
     return []
 
 def ollama_generate(model: str, prompt: str) -> str:
-    payload = {"model": model, "prompt": prompt, "stream": False}
+    payload = {"model": model, "prompt": prompt, "stream": False, "format": "json"}
     r = requests.post(f"{OLLAMA_URL}/api/generate", json=payload, timeout=300)
     r.raise_for_status()
     return r.json().get("response", "")
@@ -240,13 +240,14 @@ def build_google_slides_json(slides_data: dict, output_path: str) -> str:
 # ─── JSONパース＆展開処理 ──────────────────────────────────────────────
 def parse_slides_json(raw: str) -> dict:
     cleaned = re.sub(r"```(?:json)?|```", "", raw).strip()
-    try:
-        return json.loads(cleaned)
-    except json.JSONDecodeError:
-        m = re.search(r'\{[\s\S]*\}', cleaned)
-        if m:
-            return json.loads(m.group())
-        raise ValueError("JSONのパースに失敗しました")
+    m = re.search(r'\{[\s\S]*\}', cleaned)
+    candidate = m.group() if m else cleaned
+    for attempt in (candidate, re.sub(r',\s*([}\]])', r'\1', candidate)):
+        try:
+            return json.loads(attempt)
+        except json.JSONDecodeError:
+            continue
+    raise ValueError("JSONのパースに失敗しました")
 
 # ─── APIエンドポイント ─────────────────────────────────────────────────
 @app.route("/health")
